@@ -6,3 +6,4 @@ crash.log
 *.tfvars
 terra-key-ec2
 terra-key-ec2.pub
+tf-key.pem
