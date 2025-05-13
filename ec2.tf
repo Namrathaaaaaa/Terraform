@@ -58,10 +58,14 @@ resource "aws_security_group" "my_security_group" {
 #! ec2 instance
 
 resource "aws_instance" "my_instance" {
-  count           = 2
+  for_each = ({
+    tws-devops-automate-micro  = "t2.micro",
+    tws-devops-automate-medium = "t2.medium",
+  })
+
   key_name        = aws_key_pair.my_key.key_name
   security_groups = [aws_security_group.my_security_group.name]
-  instance_type   = var.ec2_instance_type
+  instance_type   = each.value
   ami             = var.ec2_ami_id #ubuntu
   user_data       = file("install_nginx.sh")
 
@@ -71,7 +75,7 @@ resource "aws_instance" "my_instance" {
   }
 
   tags = {
-    Name = "tws-devops-automate"
+    Name = each.key
   }
 }
 
