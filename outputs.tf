@@ -10,6 +10,9 @@
 #     value = aws_instance.my_instance[*].private_ip
 # }
 
+
+#! outputs for forEach 
+
 output "ec2_public_ip" {
   value = [
     for key in aws_instance.my_instance : key.public_ip
