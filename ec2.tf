@@ -60,7 +60,7 @@ resource "aws_security_group" "my_security_group" {
 resource "aws_instance" "my_instance" {
   for_each = ({
     tws-devops-automate-micro  = "t2.micro",
-    tws-devops-automate-medium = "t2.medium",
+   
   })
 
   depends_on = [ aws_security_group.my_security_group,aws_key_pair.my_key]
