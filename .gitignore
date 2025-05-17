@@ -7,3 +7,4 @@ crash.log
 terra-key-ec2
 terra-key-ec2.pub
 tf-key.pem
+providers.tf
