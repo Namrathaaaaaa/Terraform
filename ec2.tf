@@ -59,11 +59,11 @@ resource "aws_security_group" "my_security_group" {
 
 resource "aws_instance" "my_instance" {
   for_each = ({
-    tws-devops-automate-micro  = "t2.micro",
-    tws-devops-automate-micro  = "t2.micro",
+    tws-devops-automate-micro-1 = "t2.micro",
+    tws-devops-automate-micro-2 = "t2.micro",
   })
 
-  depends_on = [ aws_security_group.my_security_group,aws_key_pair.my_key]
+  depends_on = [aws_security_group.my_security_group, aws_key_pair.my_key]
 
   key_name        = aws_key_pair.my_key.key_name
   security_groups = [aws_security_group.my_security_group.name]
@@ -81,8 +81,8 @@ resource "aws_instance" "my_instance" {
   }
 }
 
-resource "aws_instance" "my_new_instance" {
-  ami = "unknown"
-  instance_type = "unknown"
+# resource "aws_instance" "my_new_instance" {
+#   ami = "unknown"
+#   instance_type = "unknown"
 
-}
+# }
